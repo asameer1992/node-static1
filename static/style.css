@@ -5,6 +5,7 @@ body {
     background: #F4F5ED;
     font-family: "Lustria", Georgia, serif;
     font-size: 16px;
+    color: #000;
 }
 
 a {
@@ -54,4 +55,31 @@ div.footer {
 
 .post_content {
     line-height: 1.2em;
+}
+
+.manage_title {
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 1px dotted #C7C9BE;
+    padding-bottom: 3px;
+}
+
+.manage_boxes {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.manage_box {
+    display: inline-block;
+    padding: 20px;
+    width: 200px;
+    margin: 0px 5px 0px 5px;
+    background: #C7C9BE;
+    color: #000;
+    cursor: pointer;
+}
+
+.manage_box:hover {
+    background: #89CEDE;
+    color: #F4F5ED;
 }

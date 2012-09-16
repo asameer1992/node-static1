@@ -61,7 +61,12 @@ func Index() string {
     return RenderTemplate("index.mustache", send)
 }
 
+func Manage() string {
+    return RenderTemplate("manage.mustache", nil)
+}
+
 func main() {
     web.Get("/", Index)
+    web.Get("/manage", Manage)
     web.Run("0.0.0.0:9999")
 }
