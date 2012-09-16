@@ -83,3 +83,44 @@ div.footer {
     background: #89CEDE;
     color: #F4F5ED;
 }
+
+input, textarea {
+    font-family: "Lustria", Georgia, serif;
+}
+
+.create_title {
+    display: block;
+    font-size: 18px;
+    padding: 5px;
+    width: 590px;
+    margin-top: 10px;
+    border: 1px solid #C7C9BE;
+    outline: none;
+}
+
+/* I love the name of this class. */
+.create_content {
+    display: block;
+    font-size: 16px;
+    width: 590px;
+    line-height: 1.2em;
+    margin: 5px 0px 0px 0px;
+    padding: 5px;
+    border: 1px solid #C7C9BE;
+    outline: none;
+    height: 200px;
+}
+
+.create_publish {
+    width: 100px;
+    background: #F4F5ED;
+    border: 1px solid #C7C9BE;
+    font-size: 18px;
+    padding: 5px;
+    margin: 10px 0px 0px 0px;
+}
+
+.create_publish:hover {
+    cursor: pointer;
+    border-color: #929487;
+}
