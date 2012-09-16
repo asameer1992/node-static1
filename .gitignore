@@ -1,0 +1,4 @@
+*.swp
+goblog.conf
+app
+.DS_Store

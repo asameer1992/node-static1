@@ -1,0 +1,57 @@
+/*
+ * Yes. The color scheme is from http://www.colourlovers.com/web/trends/websites/7850/Etsy
+ */
+body {
+    background: #F4F5ED;
+    font-family: "Lustria", Georgia, serif;
+    font-size: 16px;
+}
+
+a {
+    color: #89CEDE;
+    text-decoration: none;
+}
+
+div.top {
+    width: 600px;
+    font-size: 36px;
+    margin: 0px auto 0px auto;
+    padding: 10px;
+    color: #DC4E00;
+    border-bottom: 1px solid #929487;
+}
+
+div.content {
+    background: #FFFFFF;
+    width: 600px;
+    margin: 0px auto 0px auto;
+    padding: 10px;
+}
+
+div.footer {
+    padding: 10px;
+    width: 600px;
+    margin: 0px auto 0px auto;
+    border-top: 1px solid #929487;
+    font-size: 12px;
+    text-align: center;
+}
+
+.post_title {
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 1px dotted #C7C9BE;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.post_separator {
+    color: #C7C9BE;
+    text-align: center;
+    font-size: 12px;
+    padding: 10px 0px 5px 0px;
+}
+
+.post_content {
+    line-height: 1.2em;
+}
