@@ -43,7 +43,6 @@ func RenderTemplate(template string, context map[string]interface{})string {
 func Index() string {
     rows, _ := db.Query("SELECT id, title, content FROM entries ORDER BY id DESC")
 
-    // Allocate space for 5 posts per page
     entries := []*Entry {}
 
     // Get the entries
@@ -54,8 +53,12 @@ func Index() string {
         entries = append(entries, entry)
     }
 
-    var send = map[string]interface{} {
-        "entries": entries,
+    send := make(map[string]interface{})
+
+    if len(entries) == 0 {
+        send["entries"] = false
+    } else {
+        send["entries"] = entries
     }
 
     return RenderTemplate("index.mustache", send)

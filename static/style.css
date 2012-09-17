@@ -124,3 +124,8 @@ input, textarea {
     cursor: pointer;
     border-color: #929487;
 }
+
+.none {
+    width: 100%;
+    text-align: center;
+}
