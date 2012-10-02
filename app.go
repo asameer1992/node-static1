@@ -101,6 +101,5 @@ func main() {
     web.Get("/", Index)
     web.Get("/manage", Manage)
     web.Get("/manage/create", Create)
-    web.Post("/manage/create", Create)
     web.Run("0.0.0.0:9999")
 }
