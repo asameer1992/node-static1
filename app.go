@@ -5,6 +5,7 @@ import (
     "github.com/hoisie/web"
     "github.com/kless/goconfig/config"
     "database/sql"
+    "strings"
      _ "github.com/jbarham/gopgsqldriver"
 )
 
@@ -50,6 +51,10 @@ func Index() string {
         var entry = new(Entry)
 
         rows.Scan(&entry.Id, &entry.Title, &entry.Content)
+
+        // Parse newlines
+        entry.Content = strings.Replace(entry.Content, "\r\n\r\n", "</p><p>", -1);
+
         entries = append(entries, entry)
     }
 
