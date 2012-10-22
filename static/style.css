@@ -13,8 +13,10 @@ a {
     text-decoration: none;
 }
 
-div.top {
+a.top {
     width: 600px;
+    display: block;
+    color: #000;
     font-size: 36px;
     margin: 0px auto 0px auto;
     padding: 10px;
@@ -62,6 +64,10 @@ div.footer {
     font-weight: bold;
     border-bottom: 1px dotted #C7C9BE;
     padding-bottom: 3px;
+}
+
+.manage_title a {
+    color: #000;
 }
 
 .manage_boxes {
