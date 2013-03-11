@@ -1,6 +1,11 @@
 <div class=manage_title><a href=/manage>Manage</a> &raquo; <a href=/manage/entries>Entries</a></div>
-<ul>
+
+<table class=existing_list>
     {{#entries}}
-    <li>{{Title}}</li>
+    <tr>
+        <td>{{Title}}</td>
+        <td><a alt="Delete" href=/manage/existing/{{Id}}>[ - ]</a> <a alt="Edit" href=/manage/existing/{{Id}}>[ &raquo; ]</a>
+        </td>
+    </tr>
     {{/entries}}
-</ul>
+</table>

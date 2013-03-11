@@ -131,6 +131,15 @@ input, textarea {
     border-color: #929487;
 }
 
+.existing_list {
+    width: 100%;   
+    border-spacing: 0px 10px;
+}
+
+.existing_list tr td:nth-last-child(1) {
+    text-align: right;
+}
+
 .none {
     width: 100%;
     text-align: center;
