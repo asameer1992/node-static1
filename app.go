@@ -73,6 +73,27 @@ func Manage() string {
     return RenderTemplate("manage.mustache", nil)
 }
 
+func Existing() string {
+    rows, _ := db.Query("SELECT id, title, content FROM entries ORDER BY id DESC")
+
+    entries := []*Entry {}
+    for i := 0; rows.Next(); i++ {
+        var entry = new(Entry)
+        rows.Scan(&entry.Id, &entry.Title, nil)
+
+        entries = append(entries, entry)
+    }
+
+    send := make(map[string]interface{})
+    if len(entries) == 0 {
+        send["entries"] = false
+    } else {
+        send["entries"] = entries
+    }
+
+    return RenderTemplate("existing.mustache", send)
+}
+
 func Create(ctx *web.Context) string {
     // Check to see if we're actually publishing
     title, exists_title := ctx.Params["title"]
@@ -101,5 +122,7 @@ func main() {
     web.Get("/", Index)
     web.Get("/manage", Manage)
     web.Get("/manage/create", Create)
+    web.Post("/manage/create", Create)
+    web.Get("/manage/existing", Existing)
     web.Run("0.0.0.0:9999")
 }
