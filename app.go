@@ -6,6 +6,7 @@ import (
     "github.com/kless/goconfig/config"
     "database/sql"
     "strings"
+    "strconv"
      _ "github.com/jbarham/gopgsqldriver"
 )
 
@@ -94,6 +95,28 @@ func Existing() string {
     return RenderTemplate("existing.mustache", send)
 }
 
+func ExistingEdit(val string) string {
+    id, err := strconv.Atoi(val)
+    if err != nil {
+        return "Invalid or malformed id"
+    }
+
+    row := db.QueryRow("SELECT id, title, content FROM entries WHERE id=$1 LIMIT 1", id)
+    entry := new(Entry)
+    err = row.Scan(&entry.Id, &entry.Title, &entry.Content)
+    if err != nil {
+        return err.Error()
+    }
+
+    send := map[string]interface{} {
+        "Id": entry.Id,
+        "Title": entry.Title,
+        "Content": entry.Content,
+    }
+
+    return RenderTemplate("existing_edit.mustache", send);
+}
+
 func Create(ctx *web.Context) string {
     // Check to see if we're actually publishing
     title, exists_title := ctx.Params["title"]
@@ -124,5 +147,6 @@ func main() {
     web.Get("/manage/create", Create)
     web.Post("/manage/create", Create)
     web.Get("/manage/existing", Existing)
+    web.Get("/manage/existing/(.*)", ExistingEdit)
     web.Run("0.0.0.0:9999")
 }
