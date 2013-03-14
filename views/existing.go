@@ -2,7 +2,8 @@ package views
 import "../util"
 
 func Existing() string {
-    rows, _ := util.Db.Query("SELECT id, title, content FROM entries ORDER BY id DESC")
+    db := util.GetDb()
+    rows, _ := db.Query("SELECT id, title, content FROM entries ORDER BY id DESC")
 
     entries := []*util.Entry {}
     for i := 0; rows.Next(); i++ {

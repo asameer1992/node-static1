@@ -14,7 +14,8 @@ func ExistingEdit(val string) string {
         return "Invalid or malformed id"
     }
 
-    row := util.Db.QueryRow("SELECT id, title, content FROM entries WHERE id=$1 LIMIT 1", id)
+    db := util.GetDb()
+    row := db.QueryRow("SELECT id, title, content FROM entries WHERE id=$1 LIMIT 1", id)
     entry := new(util.Entry)
     err = row.Scan(&entry.Id, &entry.Title, &entry.Content)
     if err != nil {

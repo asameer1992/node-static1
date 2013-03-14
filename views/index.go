@@ -8,7 +8,12 @@ import (
 * Main page
 */
 func Index() string {
-    rows, _ := util.Db.Query("SELECT id, title, content FROM entries ORDER BY id DESC")
+    db := util.GetDb()
+    rows, err := db.Query("SELECT id, title, content FROM entries ORDER BY id DESC")
+
+    if(err != nil) {
+        return err.Error()
+    }
 
     entries := []*util.Entry {}
 

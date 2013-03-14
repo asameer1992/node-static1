@@ -16,7 +16,8 @@ func Create(ctx *web.Context) string {
     // We are! So let's save it
     if exists_title && exists_content {
         // Insert the row
-        _, err := util.Db.Exec("INSERT INTO entries (title, content) VALUES($1, $2)", title, content)
+        db := util.GetDb()
+        _, err := db.Exec("INSERT INTO entries (title, content) VALUES($1, $2)", title, content)
 
         if err != nil {
             return util.RenderTemplate("error.mustache", nil)
