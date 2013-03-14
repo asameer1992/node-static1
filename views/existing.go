@@ -39,10 +39,7 @@ func ExistingEdit(ctx *web.Context, val string) string {
     content, exists_content := ctx.Params["content"]
     success := false
     if exists_title && exists_content {
-        _, err = db.Exec("UPDATE entries SET title=$1, content=$2 WHERE id=$3", title, content, id)
-        if err != nil {
-            return err.Error()
-        }
+        db.Exec("UPDATE entries SET title=$1, content=$2 WHERE id=$3", title, content, id)
         success = true
     }
 

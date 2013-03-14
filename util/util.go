@@ -1,6 +1,6 @@
 package util
 
-import(
+import (
     "github.com/kless/goconfig/config"
     "github.com/hoisie/mustache"
     "database/sql"
@@ -17,7 +17,7 @@ type Entry struct {
 }
 
 func GetDb() *sql.DB {
-    if(db != nil){
+    if db != nil {
         return db
     }
 
@@ -29,7 +29,7 @@ func GetDb() *sql.DB {
 
     var db, err = sql.Open("postgres", "user=" + db_username + " password=" + db_password + " dbname=" + db_database + " host=" + db_hostname + " port=" + db_port)
 
-    if(err != nil) {
+    if err != nil {
         fmt.Println("[db] Error: " + err.Error())
     }
 
