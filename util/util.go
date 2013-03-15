@@ -1,14 +1,14 @@
 package util
 
 import (
-    "github.com/kless/goconfig/config"
+    "github.com/msbranco/goconfig"
     "github.com/hoisie/mustache"
     "database/sql"
      _ "github.com/jbarham/gopgsqldriver"
      "fmt"
 )
 
-var Config, _ = config.ReadDefault("goblog.conf")
+var Config, _ = goconfig.ReadConfigFile("goblog.conf")
 var db *sql.DB
 
 type Entry struct {
@@ -21,11 +21,11 @@ func GetDb() *sql.DB {
         return db
     }
 
-    var db_username, _ = Config.String("db", "username")
-    var db_password, _ = Config.String("db", "password")
-    var db_database, _ = Config.String("db", "database")
-    var db_hostname, _ = Config.String("db", "hostname")
-    var db_port, _ = Config.String("db", "port")
+    var db_username, _ = Config.GetString("db", "username")
+    var db_password, _ = Config.GetString("db", "password")
+    var db_database, _ = Config.GetString("db", "database")
+    var db_hostname, _ = Config.GetString("db", "hostname")
+    var db_port, _ = Config.GetString("db", "port")
 
     var db, err = sql.Open("postgres", "user=" + db_username + " password=" + db_password + " dbname=" + db_database + " host=" + db_hostname + " port=" + db_port)
 
@@ -40,8 +40,8 @@ func GetDb() *sql.DB {
 * Handles rendering templates in a normalized context
 */
 func RenderTemplate(template string, context map[string]interface{})string {
-    title, _ := Config.String("general", "title")
-    motto, _ := Config.String("general", "motto")
+    title, _ := Config.GetString("general", "title")
+    motto, _ := Config.GetString("general", "motto")
 
     var send = map[string]interface{} {
         "title": title,
