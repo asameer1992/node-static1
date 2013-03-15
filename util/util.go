@@ -44,8 +44,8 @@ func RenderTemplate(template string, context map[string]interface{})string {
     motto, _ := Config.GetString("general", "motto")
 
     var send = map[string]interface{} {
-        "title": title,
-        "motto": motto,
+        "blog_title": title,
+        "blog_motto": motto,
     }
     // Append all values of context to the global context
     for key, val := range context {
