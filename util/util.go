@@ -21,13 +21,13 @@ func GetDb() *sql.DB {
         return db
     }
 
-    var db_username, _ = Config.GetString("db", "username")
-    var db_password, _ = Config.GetString("db", "password")
-    var db_database, _ = Config.GetString("db", "database")
-    var db_hostname, _ = Config.GetString("db", "hostname")
-    var db_port, _ = Config.GetString("db", "port")
+    db_username, _ := Config.GetString("db", "username")
+    db_password, _ := Config.GetString("db", "password")
+    db_database, _ := Config.GetString("db", "database")
+    db_hostname, _ := Config.GetString("db", "hostname")
+    db_port, _ := Config.GetString("db", "port")
 
-    var db, err = sql.Open("postgres", "user=" + db_username + " password=" + db_password + " dbname=" + db_database + " host=" + db_hostname + " port=" + db_port)
+    db, err := sql.Open("postgres", "user=" + db_username + " password=" + db_password + " dbname=" + db_database + " host=" + db_hostname + " port=" + db_port)
 
     if err != nil {
         fmt.Println("[db] Error: " + err.Error())
