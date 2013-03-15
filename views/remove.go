@@ -11,8 +11,16 @@ func Remove(ctx *web.Context, val string) string {
         return "Invalid or malformed id"
     }
 
-    // Get the post
     db := util.GetDb()
+
+    _, submit_exists := ctx.Params["doit"]
+    if submit_exists {
+        db.Exec("DELETE FROM entries WHERE id=$1", id)
+        ctx.Redirect(302, "/manage/existing")
+        return "Redirect"
+    }
+
+    // Get the post
     row := db.QueryRow("SELECT title FROM entries WHERE id=$1", id)
     entry := new(util.Entry)
     row.Scan(&entry.Title)
